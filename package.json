@@ -7,7 +7,7 @@
   "description": "backend app",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon app.js",
+    "dev": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "te-it-a3",
