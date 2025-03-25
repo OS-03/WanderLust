@@ -1,0 +1,155 @@
+<style>
+  .form-control.search-input:focus {
+    box-shadow: none;
+    outline: none;
+  }
+  .body {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 40rem;
+  }
+
+  .search-container {
+    border: 0.3px black solid;
+    border-radius: 50px;
+    padding: 0.3rem;
+    max-width: 500px;
+    width: 100%;
+    transition: all 0.5s ease;
+  }
+  .search-container:hover {
+    background: rgba(0, 0, 0, 0.28) !important;
+    border: none;
+  }
+  .form-control.search-input {
+    border: none;
+    background: transparent;
+    padding-left: 20px;
+    font-size: 1rem;
+  }
+
+  .btn-search {
+    /* background: rgba(80, 79, 79, 0.28); */
+    color: white;
+    border-radius: 50px;
+    padding: 10px 20px;
+    border: none;
+    transition: all 0.3s ease;
+  }
+
+  .btn-search:hover {
+    background-color: #fe424d !important;
+    transform: scale(1.05);
+  }
+
+  .search-icon {
+    /* color: white; */
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+</style>
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand me-0 ms-0" href="/listings"
+      ><i class="fa-solid fa-compass"></i
+    ></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse bg-white" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="/listings"
+            style="
+              color: #fe424d !important;
+              font-family: 'Courier New';
+              font-size: 1.3rem;
+            "
+            ><b>Explore</b></a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="body collapse navbar-collapse bg-white">
+      <div class="container">
+        <div class="row justify-content-start">
+          <div class="col-12 col-md-8 col-lg-6">
+            <div class="search-container position-relative">
+              <form class="d-flex align-items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="search-icon feather feather-search"
+                >
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input
+                  class="form-control search-input ps-5"
+                  type="search"
+                  placeholder="Search anything..."
+                  aria-label="Search"
+                />
+                <button class="btn btn-search ms-2" type="submit">
+                  Search
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="collapse navbar-collapse bg-white justify-content-center align-self-center flex-wrap"
+      id="navbarNav"
+    >
+      <% if(!currUser) {%>
+      <ul class="nav navbar-nav ms-auto login-items">
+        <li class="nav-item">
+          <a class="nav-link" href="/listings/new">Airbnb Your Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/signup"><b>Signup</b></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/login"><b>Login</b></a>
+        </li>
+      </ul>
+    </div>
+    <% }else{ %>
+    <div class="collapse navbar-collapse bg-white" id="navbarNav">
+      <ul class="nav navbar-nav ms-auto login-items">
+        <li class="nav-item">
+          <a class="nav-link" href="#"
+            >Welcome, <b><i><%= currUser.username %> </i></b>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/listings/new">Airbnb Your Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Logout</a>
+        </li>
+      </ul>
+    </div>
+    <% }%>
+  </div>
+</nav>
