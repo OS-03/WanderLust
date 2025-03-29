@@ -1,4 +1,19 @@
 <% layout('/layouts/boilerplate') %>
+<head>
+    <!-- ...existing code... -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js')
+                .then(registration => {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                })
+                .catch(error => {
+                    console.error('Service Worker registration failed:', error);
+                });
+        }
+    </script>
+    <!-- ...existing code... -->
+</head>
 <nav
   class="navbar navbar-expand-md bg-body-light fixed-top border-bottom list d-flex w-100"
 >
