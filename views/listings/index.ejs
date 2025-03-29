@@ -1,84 +1,4 @@
 <% layout('/layouts/boilerplate') %>
-<style>
-  .filters {
-    width: 100;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
-  .filter {
-    width: 3rem;
-    margin-left: 1px;
-    text-align: center;
-    margin-top: 1rem !important;
-    opacity: 0.67;
-    cursor: pointer;
-  }
-  .filter:hover {
-    opacity: 1;
-    scale: 1.27;
-  }
-  .list {
-    /* justify-content:center;
-    flex-wrap: wrap; */
-    margin-top: 5rem !important;
-    /* position: absolute; */
-    position: fixed;
-    z-index: 1;
-  }
-  .card-listing {
-    margin-top: 3rem;
-  }
-
-  .filter p {
-    font-size: 0.5rem;
-  }
-
-  .tax-info {
-    display: none;
-  }
-
-  .card-label {
-    font-size: 0.7rem;
-    font-family: "Plus Jakarta Sans";
-  }
-
-  .tax-toggle:hover{
-    background-color: #dddddd;
-  }
-
-  @media (max-width: 768px) {
-    .filter {
-      width: 1.5rem;
-      margin-left: 0.5rem;
-      justify-content: space-evenly;
-    }
-    .filter p {
-      font-size: 0.5rem;
-    }
-    .card-label {
-      width: 2rem;
-      font-size: 0.4rem;
-    }
-  }
-
-  @media (max-width: 576px) {
-    .filter {
-      width: 0.5rem;
-      margin-left: 0.25rem;
-      justify-content: space-evenly;
-    }
-    .filter p {
-      font-size: 0.3rem;
-    }
-    .card-label {
-      width: 2rem;
-      font-size: 0.3rem;
-    }
-  }
-</style>
 <nav
   class="navbar navbar-expand-md bg-body-light fixed-top border-bottom list d-flex w-100"
 >
@@ -128,10 +48,10 @@
         <div><i class="fa-solid fa-mug-hot"></i></div>
         <p>Warm</p>
       </div>
-      <div class="d-flex align-items-center ms-2 "  id="card-element1">
+      <div class="d-flex align-items-center ms-2" id="card-element1">
         <div class="tax-toggle card d-flex justify-content-center p-2 m-0 h-50">
           <div
-            class="form-check form-switch d-flex align-items-center text-center"  
+            class="form-check form-switch d-flex align-items-center text-center"
           >
             <input
               class="form-check-input"
@@ -141,16 +61,15 @@
             <label
               class="form-check-label card-label ms-1"
               for="flexSwitchCheckDefault"
-             
               >Filters</label
             >
           </div>
         </div>
       </div>
-      <div class="d-flex align-items-center ms-3 "      id="card-element2">
+      <div class="d-flex align-items-center ms-3" id="card-element2">
         <div class="tax-toggle card d-flex justify-content-center p-2 m-0 h-50">
           <div
-            class="form-check-reverse form-switch align-items-center text-center" 
+            class="form-check-reverse form-switch align-items-center text-center"
           >
             <input
               class="form-check-input"
@@ -160,7 +79,6 @@
             <label
               class="form-check-label card-label ms-1"
               for="flexSwitchCheckDefault"
-         
               >Display Total After Taxes</label
             >
           </div>
@@ -192,25 +110,3 @@
   </a>
   <%}%>
 </div>
-<script>
-
-let taxSwitch2 = document.getElementById("flexSwitchCheckDefault2");
-let taxSwitch = document.getElementById("flexSwitchCheckDefault1");
-let cardItem1 = document.getElementById("card-element1");
-let cardItem2 = document.getElementById("card-element2");
-
-cardItem1.addEventListener("click", () => {
-  taxSwitch.checked = !taxSwitch.checked;
-});
-
-cardItem2.addEventListener("click", () => {
-  let taxInfo = document.getElementsByClassName("tax-info");
-  let displayState = taxSwitch2.checked ? "none" : "inline";
-
-  for (let info of taxInfo) {
-    info.style.display = displayState;
-  }
-
-  taxSwitch2.checked = !taxSwitch2.checked;
-});
-</script>

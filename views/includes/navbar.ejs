@@ -30,7 +30,6 @@
   }
 
   .btn-search {
-    /* background: rgba(80, 79, 79, 0.28); */
     color: white;
     border-radius: 50px;
     padding: 10px 20px;
@@ -44,13 +43,58 @@
   }
 
   .search-icon {
-    /* color: white; */
     position: absolute;
     left: 15px;
     top: 50%;
     transform: translateY(-50%);
   }
 
+  /* Media Queries for Responsiveness */
+  @media (max-width: 768px) {
+    .body {
+      width: 100%;
+    }
+
+    .search-container {
+      max-width: 100%;
+    }
+
+    .navbar-brand {
+      font-size: 1.5rem;
+    }
+
+    .nav-link {
+      font-size: 1rem;
+    }
+
+    .btn-search {
+      padding: 8px 15px;
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .navbar-brand {
+      font-size: 1.2rem;
+    }
+
+    .nav-link {
+      font-size: 0.9rem;
+    }
+
+    .search-container {
+      padding: 0.2rem;
+    }
+
+    .form-control.search-input {
+      font-size: 0.9rem;
+    }
+
+    .btn-search {
+      padding: 6px 10px;
+      font-size: 0.8rem;
+    }
+  }
 </style>
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
   <div class="container-fluid">

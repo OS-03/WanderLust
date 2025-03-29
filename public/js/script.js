@@ -17,3 +17,24 @@
       }, false)
     })
   })()
+
+
+  let taxSwitch2 = document.getElementById("flexSwitchCheckDefault2");
+  let taxSwitch = document.getElementById("flexSwitchCheckDefault1");
+  let cardItem1 = document.getElementById("card-element1");
+  let cardItem2 = document.getElementById("card-element2");
+  
+  cardItem1.addEventListener("click", () => {
+    taxSwitch.checked = !taxSwitch.checked;
+  });
+  
+  cardItem2.addEventListener("click", () => {
+    let taxInfo = document.getElementsByClassName("tax-info");
+    let displayState = taxSwitch2.checked ? "none" : "inline";
+  
+    for (let info of taxInfo) {
+      info.style.display = displayState;
+    }
+  
+    taxSwitch2.checked = !taxSwitch2.checked;
+  });
