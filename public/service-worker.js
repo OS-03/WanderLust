@@ -1,4 +1,4 @@
-const CACHE_NAME = 'wanderlust-cache-v3'; // Increment cache version to invalidate old cache
+const CACHE_NAME = 'wanderlust-cache-v4'; // Increment cache version to invalidate old cache
 const urlsToCache = [
     '/', 
     '/listings',
@@ -18,6 +18,12 @@ self.addEventListener('install', event => {
 });
 
 self.addEventListener('fetch', event => {
+    // Bypass cache for logout or other specific requests
+    if (event.request.url.includes('/logout')) {
+        event.respondWith(fetch(event.request));
+        return;
+    }
+
     event.respondWith(
         caches.match(event.request).then(cachedResponse => {
             const fetchPromise = fetch(event.request).then(fetchResponse => {
