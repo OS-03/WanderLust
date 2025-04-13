@@ -1,4 +1,4 @@
-const CACHE_NAME = 'wanderlust-cache-v2'; // Increment cache version to invalidate old cache
+const CACHE_NAME = 'wanderlust-cache-v3'; // Increment cache version to invalidate old cache
 const urlsToCache = [
     '/', 
     '/listings',
@@ -19,15 +19,15 @@ self.addEventListener('install', event => {
 
 self.addEventListener('fetch', event => {
     event.respondWith(
-        caches.match(event.request).then(response => {
-            // Fetch fresh content if not in cache
-            return response || fetch(event.request).then(fetchResponse => {
-                // Cache the new response for future use
+        caches.match(event.request).then(cachedResponse => {
+            const fetchPromise = fetch(event.request).then(fetchResponse => {
                 return caches.open(CACHE_NAME).then(cache => {
                     cache.put(event.request, fetchResponse.clone());
                     return fetchResponse;
                 });
             });
+            // Return cached response immediately, update cache in the background
+            return cachedResponse || fetchPromise;
         })
     );
 });
