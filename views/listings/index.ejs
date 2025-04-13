@@ -1,17 +1,4 @@
 <% layout('/layouts/boilerplate') %>
-<head>
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/service-worker.js')
-                .then(registration => {
-                    console.log('Service Worker registered with scope:', registration.scope);
-                })
-                .catch(error => {
-                    console.error('Service Worker registration failed:', error);
-                });
-        }
-    </script>
-</head>
 <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 card-listing">
   <% for(let listing of allListings) { %>
   <a href="/listings/<%= listing._id%>" class="listing-link">
