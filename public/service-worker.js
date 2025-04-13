@@ -1,15 +1,11 @@
-const CACHE_NAME = 'wanderlust-cache-v1';
+const CACHE_NAME = 'wanderlust-cache-v2'; // Increment cache version to invalidate old cache
 const urlsToCache = [
-    '/',
+    '/', 
     '/listings',
-    './layouts/boilerplate',
-    './includes/flash',
-    './includes/footer',
-    './includes/navbar',
-    '/css/style.css', // Add paths to your CSS files
-    '/javascripts/script.js', // Add paths to your JS files
-    '/images/logo.png',       // Add paths to your images
-    '/js/map.js'// Add other assets you want to cache
+    '/css/style.css',
+    '/js/script.js',
+    '/js/map.js',
+    // ...other assets...
 ];
 
 self.addEventListener('install', event => {
@@ -24,7 +20,14 @@ self.addEventListener('install', event => {
 self.addEventListener('fetch', event => {
     event.respondWith(
         caches.match(event.request).then(response => {
-            return response || fetch(event.request);
+            // Fetch fresh content if not in cache
+            return response || fetch(event.request).then(fetchResponse => {
+                // Cache the new response for future use
+                return caches.open(CACHE_NAME).then(cache => {
+                    cache.put(event.request, fetchResponse.clone());
+                    return fetchResponse;
+                });
+            });
         })
     );
 });
@@ -36,6 +39,7 @@ self.addEventListener('activate', event => {
             return Promise.all(
                 cacheNames.map(cacheName => {
                     if (!cacheWhitelist.includes(cacheName)) {
+                        console.log(`Deleting old cache: ${cacheName}`);
                         return caches.delete(cacheName);
                     }
                 })
