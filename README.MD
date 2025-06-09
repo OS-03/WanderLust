@@ -4,8 +4,6 @@ Wanderlust is a project designed to inspire and assist travelers in planning the
 
 ## Features
 
-- Travel itinerary planner
-- Budget tracking
 - Motel your Home based on Desired Listing
 - Update , View and Delete listing
 - Show Desired Destination Location on Map
